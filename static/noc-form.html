@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOC Application Form</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #e6f1fa;
+      margin: 0;
+    }
+
+    .formbold-main-wrapper {
+      width: 90%;
+      max-width: 600px;
+      background: white;
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      color: #002855;
+      margin-bottom: 20px;
+    }
+
+    .formbold-form-wrapper {
+      width: 100%;
+    }
+
+    .formbold-form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #002855;
+      margin-bottom: 5px;
+    }
+
+    .formbold-form-input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .formbold-input-flex {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .formbold-input-flex > div {
+      flex: 1;
+    }
+
+    .formbold-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: #0056b3;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    .formbold-btn:hover {
+      background-color: #003f7d;
+    }
+  </style>
+</head>
+<body>
+  <div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+      <h1>NOC Application Form</h1>
+      <form id="nocForm">
+        <div class="formbold-input-flex">
+          <div>
+            <label class="formbold-form-label" for="title">Title</label>
+            <select class="formbold-form-input" name="title" id="title" required>
+              <option value="" disabled selected>Select</option>
+              <option value="Mr.">Mr.</option>
+              <option value="Ms.">Ms.</option>
+            </select>
+          </div>          
+
+          <div>
+            <label for="name" class="formbold-form-label">Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Full Name"
+              class="formbold-form-input"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="formbold-input-flex">
+          <div>
+            <label for="rollno" class="formbold-form-label">Roll Number</label>
+            <input
+              type="text"
+              name="rollno"
+              id="rollno"
+              placeholder="Roll Number"
+              class="formbold-form-input"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="phone" class="formbold-form-label">Phone Number</label>
+            <input
+              type="text"
+              name="phone"
+              id="phone"
+              placeholder="+91"
+              class="formbold-form-input"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="formbold-input-flex">
+          <div>
+            <label class="formbold-form-label" for="branch">Branch</label>
+            <select class="formbold-form-input" name="branch" id="branch" required>
+              <option value="" disabled selected>Select</option>
+              <option value="bece">BE ECE</option>
+              <option value="benc">BE ENC</option>
+              <option value="bvlsi">BE VLSI</option>
+              <option value="mece">ME ECE</option>
+              <option value="mvlsi">ME VLSI</option>
+              <option value="others">Others</option>
+            </select>
+          </div>
+        </div>
+        
+          <div>
+            <label for="email" class="formbold-form-label">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Personal Email Address"
+              class="formbold-form-input"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="formbold-mb-3">
+          <label for="companyname" class="formbold-form-label">Company Name</label>
+          <input
+            type="text"
+            name="companyname"
+            id="companyname"
+            placeholder="Name of the Company"
+            class="formbold-form-input"
+            required
+          />
+        </div>
+
+        <div class="formbold-mb-3">
+          <label for="companyloc" class="formbold-form-label">Company Location</label>
+          <input
+            type="text"
+            name="companyloc"
+            id="companyloc"
+            placeholder="Address of Company"
+            class="formbold-form-input"
+            required
+          />
+        </div>
+
+        <div class="formbold-mb-3 formbold-input-wrapp">
+          <label class="formbold-form-label">Person of Contact</label>
+          <div>
+            <input
+              type="text"
+              name="pocname"
+              id="pocname"
+              placeholder="Full Name"
+              class="formbold-form-input"
+              required
+            />
+            <input
+              type="text"
+              name="pocphone"
+              id="pocphone"
+              placeholder="Phone number"
+              class="formbold-form-input"
+              required
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="formbold-btn">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

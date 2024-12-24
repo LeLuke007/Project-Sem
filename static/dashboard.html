@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Project Semester Portal</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .header {
+            display: inline-flex; /* Makes the header an inline flex container */
+            justify-content: space-between; /* Places items on opposite sides */
+            align-items: center; /* Vertically centers the items */
+            background-color: #002855; /* Dark navy blue */
+            padding: 10px 20px; /* Adds padding inside the header */
+            width: 100%; /* Ensures the header spans the full width */
+        }
+
+        .logo img, .profile-icon img {
+            height: 40px; /* Adjust image size */
+        }
+
+        .header-text {
+            color: white; /* White text for contrast */
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .sidebar {
+            display: flex; /* Use flexbox to arrange items horizontally */
+            justify-content: space-between; /* Space out the buttons evenly */
+            background-color: #333; /* Dark background for sidebar */
+            padding: 10px 20px; /* Padding around the sidebar */
+        }
+
+        .menu-btn {
+            background-color: #007bff; /* Button color */
+            color: white; /* Text color */
+            border: none; /* Remove borders */
+            padding: 10px 20px; /* Button padding */
+            cursor: pointer; /* Change cursor on hover */
+            border-radius: 5px; /* Rounded corners for buttons */
+        }
+
+        .menu-btn:hover {
+            background-color: #0056b3; /* Darker button color on hover */
+        }
+
+        .home-btn {
+            flex: 1; /* Ensures equal space between buttons */
+        }
+
+        .documents-btn {
+            flex: 1; /* Ensures equal space between buttons */
+        }
+
+        .chat-btn {
+            flex: 1; /* Ensures equal space between buttons */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="img/logo.png" alt="Thapar Institute Logo">
+        </div>
+        <div class="header-text">Project Semester Portal</div>
+        <div class="profile-icon">
+            <img src="img/profile.png" alt="Profile Icon">
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <button class="menu-btn home-btn" onclick="goToDashboard()">Home</button>
+        <button class="menu-btn documents-btn" onclick="goToDocuments()">Documents</button>
+        <button class="menu-btn chat-btn" onclick="goToChat()">Chat</button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+        <h1>Welcome! <span id="username-display"></span></h1>
+        <section class="document-requests">
+            <h2>Document Requests</h2>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Document</th>
+                        <th>Status</th>
+                        <th>Requested on</th>
+                        <th>Last Updated</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NO OBJECTION CERTIFICATE (NOC)</td>
+                        <td class="status pending">Pending</td>
+                        <td>21st July, 2024</td>
+                        <td>1st August, 2024</td>
+                    </tr>
+                    <tr>
+                        <td>REGISTRATION FOR INTERNSHIP SEM</td>
+                        <td class="status approved">Approved</td>
+                        <td>19th July, 2024</td>
+                        <td>31st July, 2024</td>
+                    </tr>
+                    <tr>
+                        <td>JOINING REPORT</td>
+                        <td class="status rejected">Rejected</td>
+                        <td>19th July, 2024</td>
+                        <td>31st July, 2024</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Action Buttons for NOC and 8th Semester Registration -->
+        <section class="action-buttons">
+            <button class="noc-btn" onclick="goToNocForm()">Apply for NOC</button>
+            <button class="registration-btn" onclick="goToRegistrationForm()">8th Semester Registration</button>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        By Dept. of Electronics and Communication
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        // Redirect Functions for Sidebar Navigation
+        function goToDashboard() {
+            window.location.href = 'dashboard.html';
+        }
+
+        function goToDocuments() {
+            alert("Documents functionality coming soon!");
+        }
+
+        function goToChat() {
+            alert("Chat functionality coming soon!");
+        }
+
+        // Dynamic Username Display
+        document.addEventListener("DOMContentLoaded", function () {
+            const usernameDisplay = document.getElementById("username-display");
+            const loggedInUser = localStorage.getItem("loggedInUser");
+
+            if (!loggedInUser) {
+                alert("You must be logged in to access the dashboard.");
+                window.location.href = 'login.html';
+            } else {
+                usernameDisplay.textContent = loggedInUser;
+            }
+        });
+
+        // Redirect to Form Pages
+        function goToNocForm() {
+            window.location.href = 'noc-form.html';
+        }
+
+        function goToRegistrationForm() {
+            window.location.href = 'registration-form.html';
+        }
+    </script>
+</body>
+</html>
