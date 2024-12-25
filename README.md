@@ -8,8 +8,6 @@
    cd Project-Sem
    ```
 
-### For Backend and Frontend
-
 2. Install the required dependencies:
    ```sh
    npm install
@@ -19,9 +17,8 @@
    ```sh
    npm start
    ```
-
-### For Frontend Only
-1. Start the static server:
+   
+   (For Frontend Only)
    ```sh
    node static.js
    ```
