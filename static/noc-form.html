@@ -80,6 +80,7 @@
       background-color: #003f7d;
     }
   </style>
+
 </head>
 <body>
   <div class="formbold-main-wrapper">
@@ -213,5 +214,32 @@
       </form>
     </div>
   </div>
+  <script>
+    document.getElementById('nocForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      console.log('Submitting NOC data:', data);
+
+      fetch('http://localhost:3000/noc', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.text())
+      .then(data => {
+        alert(data);
+      })
+      .catch(error => {
+        console.error('Error!', error);
+      });
+    });
+  </script>
 </body>
 </html>
