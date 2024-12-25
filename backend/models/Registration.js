@@ -1,14 +1,19 @@
 const mongoose = require('mongoose');
 
 const registrationSchema = new mongoose.Schema({
+  // userid: {
+  //   type: String,
+  //   ref: 'User',
+  //   required: true
+  // },
   name: {
     type: String,
     required: true
   },
   rollno: {
     type: String,
-    required: true,
-    unique: true
+    required: true
+    // unique: true
   },
   phone: {
     type: String,

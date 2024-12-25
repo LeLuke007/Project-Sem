@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Sign-Up Functionality
   if (signupForm) {
-    signupForm.addEventListener("submit", function (e) {
+    signupForm.addEventListener("submit", async function (e) {
       e.preventDefault();
 
       const username = document.getElementById("signup-username").value.trim();
@@ -15,24 +15,33 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // Store user credentials in localStorage
-      const users = JSON.parse(localStorage.getItem("users")) || [];
-      const userExists = users.some(user => user.username === username);
+      try {
+        const response = await fetch('/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password })
+        });
 
-      if (userExists) {
-        alert("Username already exists. Please choose a different username.");
-      } else {
-        users.push({ username, password });
-        localStorage.setItem("users", JSON.stringify(users));
-        alert("Sign-Up Successful! Please log in.");
-        window.location.href = "login.html";
+        const data = await response.json();
+
+        if (data.success) {
+          alert("Sign-Up Successful! Please log in.");
+          window.location.href = "login.html";
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
       }
     });
   }
 
   // Login Functionality
   if (loginForm) {
-    loginForm.addEventListener("submit", function (e) {
+    loginForm.addEventListener("submit", async function (e) {
       e.preventDefault();
 
       const loginUsername = document.getElementById("login-username").value.trim();
@@ -43,18 +52,28 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // Retrieve user credentials from localStorage
-      const users = JSON.parse(localStorage.getItem("users")) || [];
-      const validUser = users.find(
-        user => user.username === loginUsername && user.password === loginPassword
-      );
+      try {
+        const response = await fetch('/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username: loginUsername, password: loginPassword })
+        });
 
-      if (validUser) {
-        alert("Login Successful!");
-        localStorage.setItem("loggedInUser", loginUsername); // Store logged-in user
-        window.location.href = "dashboard.html";
-      } else {
-        alert("Invalid Credentials. Please try again.");
+        const data = await response.json();
+
+        if (data.success) {
+          alert("Login Successful!");
+          localStorage.setItem("loggedInUserId", data.userId); // Store logged-in user ID
+          localStorage.setItem("loggedInUser", data.userName); // Store logged-in user ID
+          window.location.href = "dashboard.html";
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
       }
     });
   }
